@@ -5,7 +5,7 @@ const app=express();
 app.set('view engine', 'ejs');
 
 
-app.get("/",function(){
+app.get("/",function(req,res){
 var today = new Date();
  var currentDay=today.getDay();
  var day="";
@@ -18,10 +18,9 @@ else{
 };
 
 
-app.get('/', (req, res) => {
-    res.render('list', {kindofday: day});
-  });
 
+    res.render('list', {kindofday: day});
+  
 
 })
 
