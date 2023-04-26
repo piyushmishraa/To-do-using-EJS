@@ -4,6 +4,11 @@
 
     </head>
     <body>
-        <p> today is <%=kindofday %> !!</p>
+     <% if(kindofday==="sunday"||kindofday==="saturday"){ %>
+        <p style="color: blueviolet;"><%=kindofday %> To-do</p>
+     <% }   else { %>
+  
+        <p style="color: brown;"><%=kindofday %> To-do</p>
+     <% } %>
     </body>
 </html>
