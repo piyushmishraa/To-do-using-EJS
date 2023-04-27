@@ -3,49 +3,28 @@ const express = require("express");
 
 const app = express();
 app.set("view engine", "ejs");
-
+app.use(bodyParser.urlencoded({extended:true}));
+var items=["eat","sleep","code","repeat"];
 app.get("/", function (req, res) {
   var today = new Date();
-  var currentDay = today.getDay();
-  var day = "";
+  
+  
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  var day = today.toLocaleDateString("en-US", options) ;
 
-  switch (currentDay) {
-    case 0:
-      day = "sunday";
-
-      break;
-    case 1:
-      day = "Monday";
-
-      break;
-    case 2:
-      day = "Tuesday";
-
-      break;
-    case 3:
-      day = "wednesday";
-
-      break;
-    case 4:
-      day = "thursday";
-
-      break;
-    case 5:
-      day = "friday";
-
-      break;
-    case 6:
-      day = "saturday";
-
-      break;
-
-    default:
-        console.log("oops there is an error");
-      break;
-  }
-
-  res.render("list", { kindofday: day });
+  res.render("list", { kindofday: day,newitems:items });
 });
+
+app.post("/",function (req,res) {
+    forminput =req.body.input ;
+    items.push(forminput);
+    res.redirect("/");
+})
 
 app.listen(3000, function () {
   console.log("server is up and running");

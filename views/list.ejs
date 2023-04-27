@@ -4,11 +4,19 @@
 
     </head>
     <body>
-     <% if(kindofday==="sunday"||kindofday==="saturday"){ %>
-        <p style="color: blueviolet;"><%=kindofday %> To-do</p>
-     <% }   else { %>
-  
-        <p style="color: brown;"><%=kindofday %> To-do</p>
-     <% } %>
+   <h1> <%=kindofday %>  </h1>
+   <ul>
+      <% for(var i=0;i<newitems.length;i++){ %>
+         <li><%=newitems[i] %></li>
+      <% } %>
+   </ul>
+
+   <form   action="/"  method="post" >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="input">
+       
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     </body>
 </html>
