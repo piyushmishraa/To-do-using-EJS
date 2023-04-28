@@ -4,19 +4,29 @@
      <link rel="stylesheet" href="css/styles.css" >
     </head>
     <body>
-   <h1> <%=kindofday %>  </h1>
-   <ul>
+    <div classes="box" id="heading">
+      <h1> <%=kindofday %>  </h1>
+    </div>  
+   
+    <div class="box">
       <% for(var i=0;i<newitems.length;i++){ %>
-         <li><%=newitems[i] %></li>
-      <% } %>
-   </ul>
-
-   <form   action="/"  method="post" >
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="input">
+         <div class="item">
+          <input type="checkbox">
+        <p> <%=newitems[i] %></p>
+         </div>
        
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        
+      <% } %>
+      <form  class="item" action="/"  method="post" >
+         <div class="mb-3">
+        
+           <input type="text" class="form-control" id="exampleInputEmail1"  name="input" placeholder="New Item" autocomplete="off">
+          
+         <button type="submit" class="btn btn-primary">+</button>
+       </form> 
+      
+
+    </div>
+
     </body>
 </html>
