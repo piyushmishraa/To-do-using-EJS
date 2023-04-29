@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-     <link rel="stylesheet" href="css/styles.css" >
-    </head>
-    <body>
+<%- include('header'); -%>
     <div classes="box" id="heading">
-      <h1> <%=kindofday %>  </h1>
+      <h1> <%=listTitle %>  </h1>
     </div>  
    
     <div class="box">
@@ -22,11 +17,9 @@
         
            <input type="text" class="form-control" id="exampleInputEmail1"  name="input" placeholder="New Item" autocomplete="off">
           
-         <button type="submit" class="btn btn-primary">+</button>
+         <button type="submit" class="btn btn-primary" name="list" value=<%=listTitle %> >+</button>
        </form> 
       
 
     </div>
-
-    </body>
-</html>
+    <%- include('footer'); -%>

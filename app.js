@@ -5,6 +5,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 var items=["eat","sleep","code","repeat"];
+var workitems=[];
 app.use(express.static("public"))
 app.get("/", function (req, res) {
   var today = new Date();
@@ -18,14 +19,39 @@ app.get("/", function (req, res) {
   };
   var day = today.toLocaleDateString("en-US", options) ;
 
-  res.render("list", { kindofday: day,newitems:items });
+  res.render("list", { listTitle: day,newitems:items });
 });
 
 app.post("/",function (req,res) {
-    forminput =req.body.input ;
-    items.push(forminput);
-    res.redirect("/");
-})
+
+  let forminput =req.body.input ;
+  if (req.body.list === "Work") {
+    workitems.push(forminput);
+    res.redirect("/work");
+  }  
+  
+  else{
+   items.push(forminput)
+   res.redirect("/");
+  }
+
+});
+
+app.get("/work",function (req,res) {
+  res.render("list", { listTitle: "Work List",newitems:workitems });
+});
+
+// app.post("/work",function(req,res){
+//   forminput=req.body,input ;
+//   workitems.push(forminput);
+//   res.redirect("/work")
+// })
+
+app.get("/about",function (req,res) {
+  res.render("about");
+  
+});
+
 
 app.listen(3000, function () {
   console.log("server is up and running");
